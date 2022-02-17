@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Personaje } from '../interfaces/dbz.interface';
+import { DBZService } from '../services/dbz.service';
 
 @Component({
   selector: 'app-personajes',
@@ -6,5 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: [],
 })
 export class PersonajesComponent {
-  personajes: any[] = [];
+  // @Input()
+  // personajes: Personaje[] = [];
+
+  get personajes(): Personaje[] {
+    return this.dbzService.personajes;
+  }
+
+  constructor(private dbzService: DBZService) {}
 }
